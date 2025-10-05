@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E3F2FD"
-    tools:context=".ForecasterFragment">
+    tools:context=".fragments.ForecasterFragment">
 
     <TextView
         android:id="@+id/textViewTitle"
