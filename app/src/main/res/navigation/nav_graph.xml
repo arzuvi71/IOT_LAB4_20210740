@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/locationFragment">
+
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.example.iot_lab4_20210740.fragments.LocationFragment"
+        android:label="Búsqueda de Ubicaciones"
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_locationFragment_to_forecasterFragment"
+            app:destination="@id/forecasterFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forecasterFragment"
+        android:name="com.example.iot_lab4_20210740.fragments.ForecasterFragment"
+        android:label="Pronósticos del Clima"
+        tools:layout="@layout/fragment_forecaster">
+        <argument
+            android:name="locationName"
+            app:argType="string" />
+        <argument
+            android:name="locationId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="locationLat"
+            app:argType="float" />
+        <argument
+            android:name="locationLon"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_forecasterFragment_to_dateFragment"
+            app:destination="@id/dateFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_forecasterFragment_to_locationFragment"
+            app:destination="@id/locationFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dateFragment"
+        android:name="com.example.iot_lab4_20210740.fragments.DateFragment"
+        android:label="Pronósticos Futuros"
+        tools:layout="@layout/fragment_date">
+        <argument
+            android:name="locationName"
+            app:argType="string" />
+        <argument
+            android:name="locationId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="locationLat"
+            app:argType="float" />
+        <argument
+            android:name="locationLon"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_dateFragment_to_forecasterFragment"
+            app:destination="@id/forecasterFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+</navigation>

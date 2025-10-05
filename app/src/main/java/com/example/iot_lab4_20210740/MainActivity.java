@@ -28,13 +28,17 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        //Redirección del botón ingresar
+        //Redirección del botón ingresar con validación de internet
         Button btnIngresar = findViewById(R.id.button);
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AppActivity.class);
-                startActivity(intent);
+                if (hasInternetConnection()) {
+                    Intent intent = new Intent(MainActivity.this, AppActivity.class);
+                    startActivity(intent);
+                } else {
+                    showNoInternetDialog();
+                }
             }
         });
 
